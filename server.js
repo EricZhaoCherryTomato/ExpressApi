@@ -26,6 +26,17 @@ router.get('/', function(req, res) {
     res.json({ translation: result });   
 });
 
+router.route('/translate')
+
+    .post(function(req, res) {
+
+        translate.getText(req.body.text,{to: req.body.language}).then(function(text){
+            console.log(text.text)
+            res.json({ translation: text.text });
+        });
+
+    });
+
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
